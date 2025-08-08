@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { FaDumbbell, FaUser, FaBars, FaTimes } from 'react-icons/fa';
+import type { Variants } from 'framer-motion';
 
 const Header: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -20,23 +20,19 @@ const Header: React.FC = () => {
   }, []);
 
   const navItems = [
-    { name: 'Accueil', link: '#' },
-    { name: 'Programmes', link: '#programmes' },
-    { name: 'Coachs', link: '#coachs' },
-    { name: 'Communauté', link: '#communaute' },
-    { name: 'Tarifs', link: '#tarifs' },
+    { name: 'Stratégie', link: '#strategie' },
+    { name: 'Contenus', link: '#contenus' },
+    { name: 'Réseaux sociaux', link: '#reseaux' },
+    { name: 'Témoignages', link: '#temoignages' },
+    { name: 'Contact', link: '#contact' },
   ];
 
-  const headerVariants = {
+  const headerVariants: Variants = {
     hidden: { opacity: 0, y: -50 },
     visible: { 
       opacity: 1, 
       y: 0,
-      transition: { 
-        type: 'spring',
-        stiffness: 100,
-        damping: 15
-      }
+      transition: { duration: 0.45, ease: [0.16, 1, 0.3, 1] }
     }
   };
 
@@ -67,8 +63,10 @@ const Header: React.FC = () => {
           whileHover={{ scale: 1.05 }}
           transition={{ type: 'spring', stiffness: 400, damping: 10 }}
         >
-          <FaDumbbell className="text-blue-600 text-3xl mr-2" />
-          <span className="font-bold text-xl md:text-2xl text-gray-900">Sport<span className="text-blue-600">Coach</span></span>
+          <svg className="text-blue-600 mr-2" width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M12 2l2.39 4.84L20 8l-4 3.9L17 18l-5-2.6L7 18l1-6.1L4 8l5.61-1.16L12 2z" />
+          </svg>
+          <span className="font-bold text-xl md:text-2xl text-gray-900">Sport<span className="text-blue-600">Consult</span></span>
         </motion.div>
 
         {/* Desktop Navigation */}
@@ -87,13 +85,14 @@ const Header: React.FC = () => {
               {item.name}
             </motion.a>
           ))}
-          <motion.button
+          <motion.a
+            href="#contact"
             className="bg-blue-600 hover:bg-blue-700 text-white py-2 px-6 rounded-full font-medium transition-colors flex items-center"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <FaUser className="mr-2" /> Connexion
-          </motion.button>
+            Nous contacter
+          </motion.a>
         </nav>
 
         {/* Mobile Menu Button */}
@@ -101,12 +100,21 @@ const Header: React.FC = () => {
           <motion.button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             className="text-gray-700"
+            aria-label="Ouvrir le menu"
             whileTap={{ scale: 0.9 }}
           >
-            {isMenuOpen ? 
-              <FaTimes className="text-2xl" /> : 
-              <FaBars className="text-2xl" />
-            }
+            {isMenuOpen ? (
+              <svg className="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18" />
+                <line x1="6" y1="6" x2="18" y2="18" />
+              </svg>
+            ) : (
+              <svg className="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="3" y1="6" x2="21" y2="6" />
+                <line x1="3" y1="12" x2="21" y2="12" />
+                <line x1="3" y1="18" x2="21" y2="18" />
+              </svg>
+            )}
           </motion.button>
         </div>
       </div>
@@ -135,13 +143,14 @@ const Header: React.FC = () => {
                 {item.name}
               </motion.a>
             ))}
-            <motion.button
+            <motion.a
+              href="#contact"
               className="bg-blue-600 hover:bg-blue-700 text-white py-3 px-6 rounded-full font-medium mt-4 flex items-center justify-center"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              <FaUser className="mr-2" /> Connexion
-            </motion.button>
+              Nous contacter
+            </motion.a>
           </div>
         </motion.div>
       )}

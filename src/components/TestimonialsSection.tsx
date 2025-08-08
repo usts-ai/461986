@@ -102,7 +102,7 @@ const TestimonialsSection: React.FC = () => {
     <section className="py-20 relative overflow-hidden">
       <motion.div 
         className="absolute inset-0 bg-gradient-to-r from-blue-600/10 via-purple-600/10 to-blue-600/10 z-0"
-        variants={backgroundVariants}
+        variants={gradientVariants}
         initial="initial"
         animate="animate"
       />

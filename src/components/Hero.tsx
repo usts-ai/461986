@@ -15,10 +15,10 @@ const Hero: React.FC = () => {
   return (
     <section className="relative h-screen flex items-center justify-center overflow-hidden pt-16 md:pt-0">
       {/* Background gradient and overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-600/90 to-purple-700/90 z-0"></div>
+      <div className="absolute inset-0 bg-gradient-to-br from-blue-900/80 to-blue-600/80 z-0"></div>
       
       {/* Background pattern */}
-      <div className="absolute inset-0 bg-[url('https://images.pexels.com/photos/2827400/pexels-photo-2827400.jpeg?auto=compress&cs=tinysrgb&w=1600')] bg-cover bg-center opacity-20 z-0"></div>
+      <div className="absolute inset-0 bg-[url('https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=1600')] bg-cover bg-center opacity-25 z-0"></div>
       
       <div className="container mx-auto px-4 md:px-8 relative z-10 flex flex-col md:flex-row items-center">
         <motion.div 
@@ -35,7 +35,7 @@ const Hero: React.FC = () => {
               transition: { duration: 0.8, delay: 0.4 }
             }}
           >
-            Révélez votre <span className="text-yellow-400">potentiel sportif</span> avec nos coachs experts
+            Communication <span className="text-yellow-400">percutante</span>, résultats <span className="text-yellow-400">mesurables</span>
           </motion.h1>
           
           <motion.p 
@@ -47,7 +47,7 @@ const Hero: React.FC = () => {
               transition: { duration: 0.8, delay: 0.6 }
             }}
           >
-            Une plateforme interactive qui vous accompagne dans l'atteinte de vos objectifs sportifs grâce à un coaching personnalisé et un suivi de performance sur mesure.
+            Conseil et accompagnement marketing sur 12 mois pour les acteurs du sport: stratégie, contenus, social media et campagnes qui amplifient votre visibilité et fidélisent votre communauté.
           </motion.p>
           
           <motion.div 
@@ -59,22 +59,24 @@ const Hero: React.FC = () => {
               transition: { duration: 0.8, delay: 0.8 }
             }}
           >
-            <motion.button 
+            <motion.a 
+              href="#strategie"
               className="bg-yellow-400 hover:bg-yellow-500 text-gray-900 py-3 px-8 rounded-full font-bold text-lg shadow-lg"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               transition={{ type: 'spring', stiffness: 400, damping: 10 }}
             >
-              Commencer maintenant
-            </motion.button>
-            <motion.button 
+              Découvrir la stratégie
+            </motion.a>
+            <motion.a 
+              href="#contact"
               className="bg-transparent border-2 border-white text-white py-3 px-8 rounded-full font-bold text-lg hover:bg-white/10"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               transition={{ type: 'spring', stiffness: 400, damping: 10 }}
             >
-              Découvrir les programmes
-            </motion.button>
+              Nous contacter
+            </motion.a>
           </motion.div>
         </motion.div>
         
@@ -93,10 +95,10 @@ const Hero: React.FC = () => {
           }}
         >
           <div className="relative">
-            <div className="absolute -inset-4 md:-inset-8 rounded-full bg-gradient-to-r from-blue-400 to-purple-500 blur-xl opacity-30 animate-pulse"></div>
+            <div className="absolute -inset-4 md:-inset-8 rounded-full bg-gradient-to-r from-blue-400 to-cyan-400 blur-xl opacity-30 animate-pulse"></div>
             <img 
-              src="https://images.pexels.com/photos/6456144/pexels-photo-6456144.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" 
-              alt="Athlète en entraînement" 
+              src="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=1600" 
+              alt="Équipe marketing au travail" 
               className="relative rounded-2xl shadow-2xl w-full h-auto z-10"
             />
           </div>
