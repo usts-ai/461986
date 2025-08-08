@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import type { Variants } from 'framer-motion';
 import { FaDumbbell, FaChartLine, FaUsers, FaVideo } from 'react-icons/fa';
 
 const Features: React.FC = () => {
@@ -7,30 +8,26 @@ const Features: React.FC = () => {
     {
       icon: <FaDumbbell className="text-4xl text-blue-500 mb-4" />,
       title: 'Coaching Personnalisé',
-      description: 'Des programmes d\'entraînement sur mesure adaptés à vos objectifs et votre niveau.',
-      delay: 0.2
+      description: `Des programmes d'entraînement sur mesure adaptés à vos objectifs et votre niveau.`
     },
     {
       icon: <FaChartLine className="text-4xl text-blue-500 mb-4" />,
       title: 'Suivi des Performances',
-      description: 'Analysez vos performances et suivez votre progression en temps réel grâce à notre tableau de bord interactif.',
-      delay: 0.4
+      description: `Analysez vos performances et suivez votre progression en temps réel grâce à notre tableau de bord interactif.`
     },
     {
       icon: <FaUsers className="text-4xl text-blue-500 mb-4" />,
       title: 'Communauté Active',
-      description: 'Échangez avec d\'autres sportifs, partagez vos expériences et motivez-vous mutuellement.',
-      delay: 0.6
+      description: `Échangez avec d'autres sportifs, partagez vos expériences et motivez-vous mutuellement.`
     },
     {
       icon: <FaVideo className="text-4xl text-blue-500 mb-4" />,
       title: 'Ressources Vidéo',
-      description: 'Accédez à une bibliothèque de tutoriels vidéo et de séances d\'entraînement guidées par nos experts.',
-      delay: 0.8
+      description: `Accédez à une bibliothèque de tutoriels vidéo et de séances d'entraînement guidées par nos experts.`
     }
   ];
 
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -41,22 +38,17 @@ const Features: React.FC = () => {
     }
   };
 
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: { y: 20, opacity: 0 },
-    visible: (delay: number) => ({
+    visible: {
       y: 0,
       opacity: 1,
-      transition: {
-        type: 'spring',
-        stiffness: 100,
-        damping: 12,
-        delay
-      }
-    })
+      transition: { duration: 0.45, ease: [0.16, 1, 0.3, 1] }
+    }
   };
 
   return (
-    <section className="py-20 bg-white">
+    <section className="py-20 bg-slate-50">
       <div className="container mx-auto px-4">
         <motion.div 
           className="text-center mb-16"
@@ -66,10 +58,10 @@ const Features: React.FC = () => {
           transition={{ duration: 0.8 }}
         >
           <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
-            Une plateforme complète pour votre <span className="text-blue-600">réussite sportive</span>
+            Une plateforme complète pour votre <span className="text-blue-600">croissance</span>
           </h2>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-            Découvrez comment SportCoach transforme votre façon de vous entraîner avec des outils innovants et un accompagnement personnalisé.
+            Découvrez comment SportConsult propulse votre communication avec des contenus pertinents, une stratégie claire et des activations impactantes.
           </p>
         </motion.div>
 
@@ -83,7 +75,6 @@ const Features: React.FC = () => {
           {features.map((feature, index) => (
             <motion.div
               key={index}
-              custom={feature.delay}
               variants={itemVariants}
               className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300 border border-gray-100 h-full flex flex-col items-center text-center group"
               whileHover={{ y: -5 }}

@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import type { Variants } from 'framer-motion';
 import { 
   Chart as ChartJS, 
   CategoryScale, 
@@ -14,6 +15,7 @@ import {
   ArcElement
 } from 'chart.js';
 import { Line, Bar, Doughnut } from 'react-chartjs-2';
+import type { ChartOptions } from 'chart.js';
 
 ChartJS.register(
   CategoryScale,
@@ -48,7 +50,7 @@ const StatsSection: React.FC = () => {
     ]
   };
 
-  const activityOptions = {
+  const activityOptions: ChartOptions<'line'> = {
     responsive: true,
     plugins: {
       legend: {
@@ -62,22 +64,17 @@ const StatsSection: React.FC = () => {
         bodyColor: '#fff',
         padding: 12,
         boxPadding: 6,
-        bodyFont: {
-          size: 14
-        },
-        titleFont: {
-          size: 16,
-          weight: 'bold'
-        }
+        bodyFont: { size: 14 },
+        titleFont: { size: 16, weight: 'bold' }
       }
     },
     scales: {
       y: {
         beginAtZero: true,
         grid: {
-          color: 'rgba(156, 163, 175, 0.1)',
-          drawBorder: false
+          color: 'rgba(156, 163, 175, 0.1)'
         },
+        border: { display: false },
         ticks: {
           color: '#6B7280'
         }
@@ -106,7 +103,7 @@ const StatsSection: React.FC = () => {
     ]
   };
 
-  const progressOptions = {
+  const progressOptions: ChartOptions<'bar'> = {
     responsive: true,
     plugins: {
       legend: {
@@ -160,7 +157,7 @@ const StatsSection: React.FC = () => {
     ]
   };
 
-  const distributionOptions = {
+  const distributionOptions: ChartOptions<'doughnut'> = {
     responsive: true,
     plugins: {
       legend: {
@@ -189,17 +186,13 @@ const StatsSection: React.FC = () => {
     { label: 'Séances complétées', value: '16', unit: '', trend: '+4' }
   ];
 
-  const fadeInUpVariants = {
+  const fadeInUpVariants: Variants = {
     hidden: { opacity: 0, y: 20 },
-    visible: (delay: number) => ({
+    visible: {
       opacity: 1,
       y: 0,
-      transition: {
-        duration: 0.8,
-        delay,
-        ease: 'easeOut'
-      }
-    })
+      transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] }
+    }
   };
 
   return (
@@ -227,8 +220,8 @@ const StatsSection: React.FC = () => {
             variants={fadeInUpVariants}
             initial="hidden"
             whileInView="visible"
-            custom={0}
             viewport={{ once: true, amount: 0.1 }}
+            transition={{ delay: 0 }}
           >
             {statsItems.map((item, index) => (
               <motion.div 
@@ -256,7 +249,7 @@ const StatsSection: React.FC = () => {
             variants={fadeInUpVariants}
             initial="hidden"
             whileInView="visible"
-            custom={0.2}
+            transition={{ delay: 0.2 }}
             viewport={{ once: true, amount: 0.1 }}
           >
             <h3 className="text-xl font-semibold text-gray-800 mb-6">Activité hebdomadaire</h3>
@@ -271,7 +264,7 @@ const StatsSection: React.FC = () => {
             variants={fadeInUpVariants}
             initial="hidden"
             whileInView="visible"
-            custom={0.3}
+            transition={{ delay: 0.3 }}
             viewport={{ once: true, amount: 0.1 }}
           >
             <h3 className="text-xl font-semibold text-gray-800 mb-6">Répartition des activités</h3>
@@ -286,7 +279,7 @@ const StatsSection: React.FC = () => {
             variants={fadeInUpVariants}
             initial="hidden"
             whileInView="visible"
-            custom={0.4}
+            transition={{ delay: 0.4 }}
             viewport={{ once: true, amount: 0.1 }}
           >
             <h3 className="text-xl font-semibold text-gray-800 mb-6">Progression de force</h3>
@@ -301,7 +294,7 @@ const StatsSection: React.FC = () => {
           variants={fadeInUpVariants}
           initial="hidden"
           whileInView="visible"
-          custom={0.5}
+          transition={{ delay: 0.5 }}
           viewport={{ once: true, amount: 0.1 }}
         >
           <motion.button 

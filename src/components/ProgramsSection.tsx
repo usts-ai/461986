@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import type { Variants } from 'framer-motion';
 
 interface Program {
   id: number;
@@ -64,7 +65,7 @@ const ProgramsSection: React.FC = () => {
     ? programs 
     : programs.filter(program => program.categories.includes(activeCategory));
   
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -74,21 +75,17 @@ const ProgramsSection: React.FC = () => {
     }
   };
   
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: { y: 20, opacity: 0 },
     visible: {
       y: 0,
       opacity: 1,
-      transition: {
-        type: 'spring',
-        stiffness: 100,
-        damping: 12
-      }
+      transition: { duration: 0.45, ease: [0.16, 1, 0.3, 1] }
     }
   };
 
   return (
-    <section id="programmes" className="py-20 bg-gray-50">
+    <section id="programmes" className="py-20 bg-slate-50">
       <div className="container mx-auto px-4">
         <motion.div 
           className="text-center mb-16"
